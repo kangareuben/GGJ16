@@ -4,6 +4,7 @@ using System.Collections;
 public class Note : MonoBehaviour
 {
     public bool canMove;
+    public AudioClip failSound;
     public float moveSpeed;
 
 	// Use this for initialization
@@ -27,6 +28,11 @@ public class Note : MonoBehaviour
                     GetComponent<SpriteRenderer>().enabled = false;
                     GameManager.multiplier = 1;
                     GameManager.noteCount = 0;
+
+                    //Fail sound
+                    //Commented because it didn't sound right
+                    //GetComponent<AudioSource>().clip = failSound;
+                    //GetComponent<AudioSource>().Play();
                 }
             }
             if (tempPos.x < -50)
