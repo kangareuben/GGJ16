@@ -28,7 +28,7 @@ public class Note : MonoBehaviour
                     GameManager.noteCount = 0;
                 }
             }
-            if (tempPos.x < -30)
+            if (tempPos.x < -50)
             {
                 
                 Destroy(gameObject);
