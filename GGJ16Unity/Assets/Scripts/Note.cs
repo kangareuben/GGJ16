@@ -45,6 +45,9 @@ public class Note : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             GameManager.score += (10*GameManager.multiplier);  
             GameManager.noteCount++;
+            Debug.Log("NoteCount: "+ GameManager.noteCount);
+            Debug.Log("Multiplier: " + GameManager.multiplier);
+            Debug.Log("Score: " + GameManager.score);
         }
     }
 }
