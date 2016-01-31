@@ -21,7 +21,7 @@ public class BeatLine : MonoBehaviour
         {
             Vector3 tempPos = transform.position;
             tempPos.x -= moveSpeed;
-            if (tempPos.x < -15)
+            if (tempPos.x <= -15)
             {
                 Destroy(gameObject);
             }

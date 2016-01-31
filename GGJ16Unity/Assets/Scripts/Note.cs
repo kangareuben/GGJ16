@@ -24,6 +24,7 @@ public class Note : MonoBehaviour
             {
                 if (GetComponent<SpriteRenderer>().enabled == true)
                 {
+                    GetComponent<SpriteRenderer>().enabled = false;
                     GameManager.multiplier = 1;
                     GameManager.noteCount = 0;
                 }
@@ -39,15 +40,15 @@ public class Note : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && GetComponent<SpriteRenderer>().enabled)
         {
             GetComponent<AudioSource>().Play();
             GetComponent<SpriteRenderer>().enabled = false;
             GameManager.score += (10*GameManager.multiplier);  
             GameManager.noteCount++;
-            Debug.Log("NoteCount: "+ GameManager.noteCount);
-            Debug.Log("Multiplier: " + GameManager.multiplier);
-            Debug.Log("Score: " + GameManager.score);
+            //Debug.Log("NoteCount: "+ GameManager.noteCount);
+            //Debug.Log("Multiplier: " + GameManager.multiplier);
+            //Debug.Log("Score: " + GameManager.score);
         }
     }
 }

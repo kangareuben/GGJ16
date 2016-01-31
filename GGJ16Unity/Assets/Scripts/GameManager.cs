@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else if(noteCount >= 15 && noteCount < 20)
+        else if(noteCount >= 15)
         {
             multiplier = 4;
             for(int i = 0; i < 4; i++)
@@ -95,6 +95,16 @@ public class GameManager : MonoBehaviour
         }
 
         scoreText.GetComponent<GUIText>().text = score.ToString();
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if(GameObject.FindGameObjectsWithTag("BeatLine").Length == 0)
+        {
+            StartCoroutine("GameOver");
+        }
     }
 
     void StartGame()
@@ -119,5 +129,11 @@ public class GameManager : MonoBehaviour
                 g.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(5f);
+        Application.Quit();
     }
 }
