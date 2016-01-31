@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Note : MonoBehaviour
 {
+    public bool canMove;
     public float moveSpeed;
 
 	// Use this for initialization
@@ -14,13 +15,16 @@ public class Note : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        Vector3 tempPos = transform.position;
-        tempPos.x -= moveSpeed;
-        if(tempPos.x < -15)
+        if(canMove)
         {
-            Destroy(gameObject);
+            Vector3 tempPos = transform.position;
+            tempPos.x -= moveSpeed;
+            if(tempPos.x < -30)
+            {
+                Destroy(gameObject);
+            }
+            transform.position = tempPos;
         }
-        transform.position = tempPos;
 	}
 
     void OnTriggerEnter2D(Collider2D other)

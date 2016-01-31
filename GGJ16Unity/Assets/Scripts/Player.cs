@@ -3,15 +3,16 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    public bool beatHit;
+    public bool canMove;
     public bool isPlayer1;
     public float moveSpeed;
-
-    public bool beatHit;
 
 	// Use this for initialization
 	void Start()
     {
         beatHit = false;
+        canMove = false;
 	}
 	
 	// Update is called once per frame
@@ -51,17 +52,20 @@ public class Player : MonoBehaviour
 
     void Move(float amount)
     {
-        Vector3 tempPos = transform.position;
-        tempPos.y += amount;
-        if(tempPos.y > 4)
+        if(canMove)
         {
-            tempPos.y = 4;
+            Vector3 tempPos = transform.position;
+            tempPos.y += amount;
+            if(tempPos.y > 4)
+            {
+                tempPos.y = 4;
+            }
+            else if(tempPos.y < -4)
+            {
+                tempPos.y = -4;
+            }
+            transform.position = tempPos;
         }
-        else if(tempPos.y < -4)
-        {
-            tempPos.y = -4;
-        }
-        transform.position = tempPos;
     }
 
     void OnTriggerEnter2D(Collider2D other)
