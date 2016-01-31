@@ -21,6 +21,14 @@ public class BeatLine : MonoBehaviour
         {
             Vector3 tempPos = transform.position;
             tempPos.x -= moveSpeed;
+            if (tempPos.x < -10)
+            {
+                if (GetComponent<SpriteRenderer>().enabled == true)
+                {
+                    GameManager.multiplier = 1;
+                    GameManager.noteCount = 0;
+                }
+            }
             if (tempPos.x < -15)
             {
                 Destroy(gameObject);
@@ -31,6 +39,8 @@ public class BeatLine : MonoBehaviour
             {
                 GetComponent<AudioSource>().Play();
                 GetComponent<SpriteRenderer>().enabled = false;
+                GameManager.score += (5*GameManager.multiplier);
+                GameManager.noteCount++;
             }
         }
     }
